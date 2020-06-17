@@ -48,7 +48,7 @@ class ConanLexActivator(ConanFile):
                 'x86_64': 'amd64',
             }[str(self.settings.arch)]
             if self.options.shared:
-                if self.settings.compiler.version >= '16':
+                if int(str(self.settings.compiler.version)) >= 16:
                     return os.path.join('libs', f'vc16', la_arch)
                 else:
                     return os.path.join('libs', f'vc14', la_arch)
