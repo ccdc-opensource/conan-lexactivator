@@ -26,7 +26,7 @@ class ConanLexActivator(ConanFile):
     def source(self):
         tools.get(**self.conan_data["sources"][self.version][str(self.settings.os)]['shared'])
         if self.settings.os == "Windows":
-            tools.get(**self.conan_data["sources"][self.version][str(self.settings.os)]['static'][self.settings.compiler.version])
+            tools.get(**self.conan_data["sources"][self.version][str(self.settings.os)]['static'][str(self.settings.compiler.version)])
         else:
             tools.get(**self.conan_data["sources"][self.version][str(self.settings.os)]['static'])
 
