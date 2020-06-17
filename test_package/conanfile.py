@@ -5,9 +5,7 @@ import os
 class TestPackageConan(ConanFile):
     settings = "os", "compiler", "arch"
     generators = "cmake"
-    options = {
-        "shared": [True, False],
-    }
+
     def build(self):
         cmake = CMake(self)
         cmake.configure()
