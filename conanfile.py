@@ -67,7 +67,7 @@ class ConanLexActivator(ConanFile):
 
         if self.options.shared:
             self.copy("*.dylib", dst="lib", src=self._package_lib_dir)
-            self.copy("*.dll", dst="lib", src=self._package_lib_dir)
+            self.copy("*.dll", dst="bin", src=self._package_lib_dir)
             self.copy("*.so", dst="lib", src=self._package_lib_dir)
             self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
         else:
@@ -92,6 +92,8 @@ class ConanLexActivator(ConanFile):
             self.cpp_info.system_libs.extend(["pthread", "ssl3", "nss3", "nspr4"])
         if self.settings.os == "Macos" and not self.options.shared:
             self.cpp_info.frameworks.extend(["CoreFoundation", "SystemConfiguration", "Security"])
+        if self.settings.os == "Windows" and self.options.shared:
+            self.env_info.path.append(os.path.join(self.package_folder, "bin"))
 
         self.cpp_info.names["cmake_find_package"] = self._la_libname
         self.cpp_info.names["cmake_find_package_multi"] = self._la_libname
