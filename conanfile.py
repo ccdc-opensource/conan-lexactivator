@@ -45,7 +45,7 @@ class ConanLexActivator(ConanFile):
         if self.settings.os == 'Windows':
             la_arch = {
                 'x86': 'x86',
-                'x86_64': 'amd64',
+                'x86_64': 'x64',
             }[str(self.settings.arch)]
             if self.options.shared:
                 if int(str(self.settings.compiler.version)) >= 16:
