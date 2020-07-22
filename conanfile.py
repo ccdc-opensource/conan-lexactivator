@@ -86,6 +86,8 @@ class ConanLexActivator(ConanFile):
                 self.copy("libcurl_MDd.lib", dst="lib", src=self._package_lib_dir)
 
     def package_info(self):
+        self.env_info.LEXACTIVATORDIR = self.package_folder
+        
         self.cpp_info.libs = tools.collect_libs(self)
 
         if self.settings.os == "Linux" and not self.options.shared:
