@@ -65,6 +65,7 @@ class ConanLexActivator(ConanFile):
     def system_requirements(self):
         if tools.os_info.is_linux:
             installer = tools.SystemPackageTool()
+            installer.install(f"epel-release")
             installer.install(f"patchelf")
 
     def package(self):
