@@ -5,7 +5,7 @@ from conans.errors import ConanInvalidConfiguration
 
 class ConanLexActivator(ConanFile):
     name = "lexactivator"
-    version = '3.9.2'
+    version = '3.12.1'
     description = "LexActivator licensing library"
     url = "https://app.cryptlex.com/downloads"
     homepage = "https://cryptlex.com/"
@@ -62,10 +62,24 @@ class ConanLexActivator(ConanFile):
             return os.path.join('libs', 'clang', 'x86_64')
         raise ConanInvalidConfiguration('Libraries for this configuration are not available')
 
+    def system_requirements(self):
+        if tools.os_info.is_linux:
+            installer = tools.SystemPackageTool()
+            installer.install(f"patchelf")
+
     def package(self):
         self.copy("*.h", dst="include", src='headers')
 
         if self.options.shared:
+            if self.settings.os == 'Linux':
+                # cryptlex refuse to add a soname to their so files.
+                # this mucks up rpaths on cmake builds
+                # so we work around their wy of doing things
+                # https://forums.cryptlex.com/t/shared-libraries-without-soname-and-version-number/744
+                soname = f'lib{_la_libname}.so'
+                so = os.path.join(self._package_lib_dir, 'soname)
+                self.run(f'patchelf --set-soname {soname} {so}')
+
             self.copy("*.dylib", dst="lib", src=self._package_lib_dir)
             self.copy("*.dll", dst="bin", src=self._package_lib_dir)
             self.copy("*.so", dst="lib", src=self._package_lib_dir)
