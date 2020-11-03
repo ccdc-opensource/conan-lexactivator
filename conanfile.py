@@ -77,7 +77,7 @@ class ConanLexActivator(ConanFile):
                 # so we work around their wy of doing things
                 # https://forums.cryptlex.com/t/shared-libraries-without-soname-and-version-number/744
                 soname = f'lib{_la_libname}.so'
-                so = os.path.join(self._package_lib_dir, 'soname)
+                so = os.path.join(self._package_lib_dir, soname)
                 self.run(f'patchelf --set-soname {soname} {so}')
 
             self.copy("*.dylib", dst="lib", src=self._package_lib_dir)
