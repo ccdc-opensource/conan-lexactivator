@@ -9,7 +9,7 @@ extends:
   template: third-party-library-all-platforms-from-local-recipe.yml@templates
   parameters:
     package: lexactivator
-    package_version: 3.12.1
+    package_version: 3.14.7
     destination_repository: ccdc-3rdparty-conan
     platforms:
       - centos7_gcc9

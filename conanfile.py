@@ -5,7 +5,7 @@ from conans.errors import ConanInvalidConfiguration
 
 class ConanLexActivator(ConanFile):
     name = "lexactivator"
-    version = '3.12.1'
+    version = '3.14.7'
     description = "LexActivator licensing library"
     url = "https://app.cryptlex.com/downloads"
     homepage = "https://cryptlex.com/"
@@ -37,8 +37,14 @@ class ConanLexActivator(ConanFile):
             la_arch = {
                 'x86': 'i386',
                 'x86_64': 'amd64',
-                # TODO: map armv5el, armv5hf, armv6, armv7, armv7hf, armv7s, armv7k, armv8, armv8_32, armv8.3
-                # to arm64, armel, armhf
+                'armv5el': 'armel',
+                'armv5hf': 'armhf',
+                'armv6': 'armel',
+                'armv7': 'armel',
+                'armv7hf': 'armhf',
+                'armv8': 'arm64',
+                'armv8_32': 'armhf',
+                'armv8.3': 'arm64',
             }[str(self.settings.arch)]
             return os.path.join('libs', compiler, la_arch)
 
@@ -59,7 +65,15 @@ class ConanLexActivator(ConanFile):
                     return os.path.join('libs', la_arch)
 
         if self.settings.os == 'Macos':
-            return os.path.join('libs', 'clang', 'x86_64')
+            if self.options.shared:
+                la_arch = {
+                    'x86_64': 'x86_64',
+                    'armv8': 'arm64',
+                    'armv8.3': 'arm64',
+                }[str(self.settings.arch)]
+                return os.path.join('libs', 'clang', la_arch)
+            else:
+                return os.path.join('libs', 'clang', 'universal')
         raise ConanInvalidConfiguration('Libraries for this configuration are not available')
 
     def system_requirements(self):

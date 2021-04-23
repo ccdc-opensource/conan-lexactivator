@@ -51,3 +51,26 @@
         "16":
           "sha256": "450801e2dc2f43bc5315173040be57bae11988d16d07868b6ec8a6160db3af59"
           "url": "https://dl.cryptlex.com/downloads/v3.12.1/LexActivator-Static-Win-VC16.zip"
+  "3.14.7":
+    "Linux":
+      "shared":
+        "sha256": "77ffa18da75c0cf3f357b14facd071863ff8993c668bc843dd0f21d930b89d2a"
+        "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Linux.zip"
+      "static":
+        "sha256": "f9948334cd282aa00c801e1525d84d7d3aa79e26a69266b47641463e66e18304"
+        "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Static-Linux.zip"
+    "Macos":
+      "shared":
+        "sha256": "d83197889cec3af26b606ab9bcac5d370b28cf70271fcaf33ee3868dfacbc1a0"
+        "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Mac.zip"
+      "static":
+        "sha256": "a4eb3b06c2cbf02b7db5dde47f39e957a904ba60cb29958e2f7f14d3e269f477"
+        "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Static-Mac.zip"
+    "Windows":
+      "shared":
+        "sha256": "c03cc6848313ea3fdc3eb247fb212a427d4d468e1eb657d9749fd7629c572b84"
+        "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Win.zip"
+      "static":
+        "16":
+          "sha256": "0baec05d53171c44577cf3b99eff99057f8afbe0cf7f60caecd14c527c36a15a"
+          "url": "https://dl.cryptlex.com/downloads/v3.14.7/LexActivator-Static-Win-VC14.zip"
