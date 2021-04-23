@@ -79,7 +79,8 @@ class ConanLexActivator(ConanFile):
     def system_requirements(self):
         if tools.os_info.is_linux:
             installer = tools.SystemPackageTool()
-            installer.install(f"epel-release")
+            if tools.os_info.linux_distro == "fedora" or tools.os_info.linux_distro == "centos" or tools.os_info.linux_distro == "redhat":
+                installer.install(f"epel-release")
             installer.install(f"patchelf")
 
     def package(self):
