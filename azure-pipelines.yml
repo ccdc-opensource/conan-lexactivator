@@ -11,8 +11,3 @@ extends:
     package: lexactivator
     package_version: 3.14.7
     destination_repository: ccdc-3rdparty-conan
-    platforms:
-      - centos7_gcc9
-      - macos1015_xcode11
-      - win2016_vs2017
-      - win2019_vs2019

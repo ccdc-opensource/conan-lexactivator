@@ -128,8 +128,3 @@ class ConanLexActivator(ConanFile):
 
         self.cpp_info.names["cmake_find_package"] = self._la_libname
         self.cpp_info.names["cmake_find_package_multi"] = self._la_libname
-
-    def package_id(self):
-        # we don't really care about the compiler version, unless we're on windows
-        if self.settings.os != "Windows":
-            self.info.settings.compiler.version = "any"
