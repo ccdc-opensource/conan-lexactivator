@@ -12,4 +12,4 @@ extends:
     package: lexactivator
     package_version: 3.14.7
     destination_repository: ccdc-3rdparty-conan
-    additional_profiles_for_all_platforms: static-cryplex
+    additional_profiles_for_all_platforms: static-cryptlex
