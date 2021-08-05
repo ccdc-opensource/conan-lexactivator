@@ -102,18 +102,19 @@ class ConanLexActivator(ConanFile):
             self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
         else:
             self.copy("*.a", dst="lib", src=self._package_lib_dir)
-            if self.settings.compiler.runtime == 'MT':
-                self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
-                self.copy("libcurl_MT.lib", dst="lib", src=self._package_lib_dir)
-            if self.settings.compiler.runtime == 'MTd':
-                self.copy("LexActivatord.lib", dst="lib", src=self._package_lib_dir)
-                self.copy("libcurl_MTd.lib", dst="lib", src=self._package_lib_dir)
-            if self.settings.compiler.runtime == 'MD':
-                self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
-                self.copy("libcurl_MD.lib", dst="lib", src=self._package_lib_dir)
-            if self.settings.compiler.runtime == 'MDd':
-                self.copy("LexActivatord.lib", dst="lib", src=self._package_lib_dir)
-                self.copy("libcurl_MDd.lib", dst="lib", src=self._package_lib_dir)
+            if self.settings.os == 'Windows':
+                if self.settings.compiler.runtime == 'MT':
+                    self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
+                    self.copy("libcurl_MT.lib", dst="lib", src=self._package_lib_dir)
+                if self.settings.compiler.runtime == 'MTd':
+                    self.copy("LexActivatord.lib", dst="lib", src=self._package_lib_dir)
+                    self.copy("libcurl_MTd.lib", dst="lib", src=self._package_lib_dir)
+                if self.settings.compiler.runtime == 'MD':
+                    self.copy("LexActivator.lib", dst="lib", src=self._package_lib_dir)
+                    self.copy("libcurl_MD.lib", dst="lib", src=self._package_lib_dir)
+                if self.settings.compiler.runtime == 'MDd':
+                    self.copy("LexActivatord.lib", dst="lib", src=self._package_lib_dir)
+                    self.copy("libcurl_MDd.lib", dst="lib", src=self._package_lib_dir)
 
     def package_info(self):
         self.env_info.LEXACTIVATORDIR = self.package_folder
