@@ -1,8 +1,9 @@
 resources:
   repositories:
     - repository: templates
-      type: git
-      name: ccdc-3rd-party/conan-azure-devops
+      type: github
+      resource: github
+      name: ccdc-opensource/conan-azure-devops
       ref: refs/heads/development
 
 extends:
@@ -11,3 +12,4 @@ extends:
     package: lexactivator
     package_version: 3.14.7
     destination_repository: ccdc-3rdparty-conan
+    additional_profiles_for_all_platforms: static-cryplex
