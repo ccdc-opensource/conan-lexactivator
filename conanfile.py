@@ -122,7 +122,7 @@ class ConanLexActivator(ConanFile):
         self.cpp_info.libs = tools.collect_libs(self)
 
         if self.settings.os == "Linux" and not self.options.shared:
-            self.cpp_info.system_libs.extend(["pthread", "ssl3", "nss3", "nspr4"])
+            self.cpp_info.system_libs.extend(["pthread"])
         if self.settings.os == "Macos" and not self.options.shared:
             self.cpp_info.frameworks.extend(["CoreFoundation", "SystemConfiguration", "Security"])
         if self.settings.os == "Windows" and self.options.shared:
