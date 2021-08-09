@@ -128,5 +128,9 @@ class ConanLexActivator(ConanFile):
         if self.settings.os == "Windows" and self.options.shared:
             self.env_info.path.append(os.path.join(self.package_folder, "bin"))
 
+        if self.settings.os == "Windows" and not self.options.shared:
+            self.cpp_info.defines.append('LEXACTIVATOR_STATIC')
+            self.cpp_info.system_libs.extend(["winhttp"])
+
         self.cpp_info.names["cmake_find_package"] = self._la_libname
         self.cpp_info.names["cmake_find_package_multi"] = self._la_libname
