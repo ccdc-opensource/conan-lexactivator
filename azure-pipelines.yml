@@ -6,10 +6,23 @@ resources:
       name: ccdc-opensource/conan-azure-devops
       ref: refs/heads/development
 
-extends:
-  template: third-party-library-all-platforms-from-local-recipe.yml@templates
-  parameters:
-    package: lexactivator
-    package_version: 3.14.7
-    destination_repository: ccdc-3rdparty-conan
-    # additional_profiles_for_all_platforms: static-cryptlex
+stages:
+- stage: dynamic
+  jobs:
+    - template: third-party-library-all-platforms-from-local-recipe.yml@templates
+      parameters:
+        package: lexactivator
+        package_version: 3.14.7
+        destination_repository: ccdc-3rdparty-conan
+        # Once without to build the dynamic version
+        # additional_profiles_for_all_platforms: static-cryptlex
+
+- stage: static
+  jobs:
+    - template: third-party-library-all-platforms-from-local-recipe.yml@templates
+      parameters:
+        package: lexactivator
+        package_version: 3.14.7
+        destination_repository: ccdc-3rdparty-conan
+        # Once with to build the static version
+        additional_profiles_for_all_platforms: static-cryptlex
