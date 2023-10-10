@@ -12,7 +12,7 @@ stages:
     - template: third-party-library-all-platforms-from-local-recipe.yml@templates
       parameters:
         package: lexactivator
-        package_version: 3.14.7
+        package_version: 3.19.2
         destination_repository: ccdc-3rdparty-conan
         # Once without to build the dynamic version
         # additional_profiles_for_all_platforms: static-cryptlex
@@ -22,7 +22,7 @@ stages:
     - template: third-party-library-all-platforms-from-local-recipe.yml@templates
       parameters:
         package: lexactivator
-        package_version: 3.14.7
+        package_version: 3.19.2
         destination_repository: ccdc-3rdparty-conan
         # Once with to build the static version
         additional_profiles_for_all_platforms: static-cryptlex

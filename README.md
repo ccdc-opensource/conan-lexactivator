@@ -1,2 +1,2 @@
-# Introduction 
+# Introduction
 Third party libraries: LexActivator
